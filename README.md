@@ -1,2 +1,8 @@
-# react-repo-git-info
-Lista usuÃ¡rio e seus repositÃ³rios do github com React + JSX
+Lista usuário seus repositórios do github com React + JSX
+
+# To run:
+* > npm install
+* > webpack -w (with watch)
+
+# Open:
+* public/index.html
