@@ -1,4 +1,4 @@
-# Lista usuário seus repositórios do github com React + JSX
+# List github users and your repositories with React + JSX
 
 # To run:
 * > npm install
