@@ -23152,7 +23152,7 @@ var SearchUser = React.createClass({
               type: 'text',
               ref: 'username',
               className: 'form-control',
-              placeholder: 'Ex: matheusml'
+              placeholder: 'Ex: juniorabranches'
             })
           ),
           React.createElement(
