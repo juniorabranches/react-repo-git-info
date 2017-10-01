@@ -2,8 +2,15 @@
 
 ![View this](app/assets/img.png)
 
-# To run:
-* > npm install
+# Install:
+```bash
+npm install
+```
+
+# Build:  
+```bash
+webpack -w
+```
 
 # Open:
 * public/index.html
