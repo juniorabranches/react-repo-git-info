@@ -3,7 +3,7 @@ var React = require('react');
 var UserRepos = require('./UserRepos');
 
 function UserInfo(props) {
-    
+
     var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
@@ -26,7 +26,7 @@ function UserInfo(props) {
           <p><a className="btn btn-default" href={props.user.html_url} role="button">View details</a></p>
         </div>
         <div className="col-lg-8">
-          <UserRepos repos={props.repos} />
+          <UserRepos repos={props.repos} pagingButtons={props.pagingButtons} updateRepos={props.updateRepos} />
         </div>
       </div>
     ) : null;
@@ -37,6 +37,7 @@ function UserInfo(props) {
 UserInfo.propTypes = {
   user: React.PropTypes.object,
   repos: React.PropTypes.array,
+  updateRepos: React.PropTypes.func,
 };
 
 module.exports = UserInfo;
