@@ -16,26 +16,23 @@ var SearchUser = React.createClass({
 
   render: function() {
     return (
-      <div className="jumbotron">
-        <h1>GitHub Info</h1>
-        <div className="row">
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label>Username</label>
-              <input
-                type="text"
-                ref="username"
-                className="form-control"
-                placeholder="Ex: juniorabranches"
-                />
+      <nav className="navbar navbar-inverse">
+        <div className="container-fluid">
+          <div className="navbar-header">
+           <a className="navbar-brand" href="">GitHub User Info</a>
+          </div>
+          <form className="navbar-form navbar-left" onSubmit={this.handleSubmit}>
+            <div className="input-group">
+              <input type="text" ref="username" className="form-control" placeholder="juniorabranches"/>
+              <div className="input-group-btn">
+                <button className="btn btn-default" type="submit">
+                  <i className="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
             </div>
-            <button
-              type="submit"
-              className="btn btn-primary">Search
-            </button>
           </form>
         </div>
-      </div>
+      </nav>        
     );
   }
 });
