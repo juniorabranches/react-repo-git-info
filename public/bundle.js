@@ -60,7 +60,9 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 91);
+
+/******/ 	return __webpack_require__(__webpack_require__.s = 90);
+
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1220,7 +1222,9 @@ module.exports = { debugTool: debugTool };
 
 
 var bind = __webpack_require__(85);
-var isBuffer = __webpack_require__(197);
+
+var isBuffer = __webpack_require__(196);
+
 
 /*global toString:true*/
 
@@ -2775,11 +2779,13 @@ module.exports = PooledClass;
 
 var _assign = __webpack_require__(4);
 
-var ReactBaseClasses = __webpack_require__(53);
-var ReactChildren = __webpack_require__(92);
-var ReactDOMFactories = __webpack_require__(96);
+
+var ReactBaseClasses = __webpack_require__(52);
+var ReactChildren = __webpack_require__(91);
+var ReactDOMFactories = __webpack_require__(95);
 var ReactElement = __webpack_require__(15);
-var ReactPropTypes = __webpack_require__(100);
+var ReactPropTypes = __webpack_require__(99);
+
 var ReactVersion = __webpack_require__(102);
 
 var createReactClass = __webpack_require__(103);
@@ -2952,7 +2958,9 @@ module.exports = reactProdInvariant;
 
 
 var ReactRef = __webpack_require__(115);
-var ReactInstrumentation = __webpack_require__(9);
+
+var ReactInstrumentation = __webpack_require__(8);
+
 
 var warning = __webpack_require__(2);
 
@@ -4627,10 +4635,12 @@ var _assign = __webpack_require__(4);
 
 var EventPluginRegistry = __webpack_require__(28);
 var ReactEventEmitterMixin = __webpack_require__(141);
-var ViewportMetrics = __webpack_require__(68);
+
+var ViewportMetrics = __webpack_require__(67);
 
 var getVendorPrefixedEventName = __webpack_require__(142);
-var isEventSupported = __webpack_require__(39);
+var isEventSupported = __webpack_require__(38);
+
 
 /**
  * Summary of `ReactBrowserEventEmitter` event handling:
@@ -7243,7 +7253,9 @@ var ReactCurrentOwner = __webpack_require__(11);
 var ReactComponentTreeHook = __webpack_require__(7);
 var ReactElement = __webpack_require__(15);
 
-var checkReactTypeSpec = __webpack_require__(97);
+
+var checkReactTypeSpec = __webpack_require__(96);
+
 
 var canDefineProperty = __webpack_require__(26);
 var getIteratorFn = __webpack_require__(56);
@@ -7494,7 +7506,9 @@ module.exports = ReactElementValidator;
 // Therefore we re-export development-only version with all the PropTypes checks here.
 // However if one is migrating to the `prop-types` npm library, they will go through the
 // `index.js` entry point, and it will branch depending on the environment.
-var factory = __webpack_require__(59);
+
+var factory = __webpack_require__(100);
+
 module.exports = function(isValidElement) {
   // It is still allowed in 15.5.
   var throwOnDirectAccess = false;
@@ -8499,6 +8513,10 @@ module.exports = inputValueTracking;
  * @see http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
  */
 
+
+var quoteAttributeValueForBrowser = __webpack_require__(140);
+var warning = __webpack_require__(2);
+
 var supportedInputTypes = {
   color: true,
   date: true,
@@ -8516,6 +8534,7 @@ var supportedInputTypes = {
   url: true,
   week: true
 };
+
 
 function isTextInputElement(elem) {
   var nodeName = elem && elem.nodeName && elem.nodeName.toLowerCase();
@@ -9080,9 +9099,18 @@ module.exports = ReactPropTypesSecret;
 
 var _assign = __webpack_require__(4);
 
+
+var ReactCompositeComponent = __webpack_require__(148);
+var ReactEmptyComponent = __webpack_require__(76);
+var ReactHostComponent = __webpack_require__(77);
+
+var getNextDebugID = __webpack_require__(151);
+var invariant = __webpack_require__(1);
+
 var LinkedValueUtils = __webpack_require__(44);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(12);
+
 
 var warning = __webpack_require__(2);
 
@@ -9828,8 +9856,10 @@ module.exports = EventListener;
 var ReactDOMSelection = __webpack_require__(165);
 
 var containsNode = __webpack_require__(167);
-var focusNode = __webpack_require__(70);
-var getActiveElement = __webpack_require__(82);
+
+var focusNode = __webpack_require__(69);
+var getActiveElement = __webpack_require__(81);
+
 
 function isInDocument(node) {
   return containsNode(document.documentElement, node);
@@ -10003,9 +10033,11 @@ var ReactCurrentOwner = __webpack_require__(11);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMContainerInfo = __webpack_require__(182);
 var ReactDOMFeatureFlags = __webpack_require__(183);
-var ReactFeatureFlags = __webpack_require__(65);
+
+var ReactFeatureFlags = __webpack_require__(64);
 var ReactInstanceMap = __webpack_require__(25);
-var ReactInstrumentation = __webpack_require__(9);
+var ReactInstrumentation = __webpack_require__(8);
+
 var ReactMarkupChecksum = __webpack_require__(184);
 var ReactReconciler = __webpack_require__(19);
 var ReactUpdateQueue = __webpack_require__(49);
@@ -10557,6 +10589,28 @@ module.exports = getHostComponentFromComposite;
 /* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var axios = __webpack_require__(194);
+
+var GitHubUser = {
+  getByUsername: function (username) {
+    return axios.get('https://api.github.com/users/' + username);
+  },
+
+  getReposByUsername: function (username, page = 1) {
+    return axios.get(`https://api.github.com/users/${username}/repos?page=${page}?client_id=b4430a1d2ae0c96bc4d0&client_secret=4b7a4dbb2f5f89bf3c22b03620a3d06ce0fd0dca`);
+  },
+
+  getReposByLink: function (pageLink) {
+    return axios.get(pageLink);
+  }
+};
+
+module.exports = GitHubUser;
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -10578,13 +10632,15 @@ module.exports = function bind(fn, thisArg) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(10);
-var settle = __webpack_require__(200);
-var buildURL = __webpack_require__(202);
-var parseHeaders = __webpack_require__(203);
-var isURLSameOrigin = __webpack_require__(204);
+
+var utils = __webpack_require__(9);
+var settle = __webpack_require__(199);
+var buildURL = __webpack_require__(201);
+var parseHeaders = __webpack_require__(202);
+var isURLSameOrigin = __webpack_require__(203);
 var createError = __webpack_require__(87);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(205);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(204);
+
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -10824,6 +10880,7 @@ module.exports = Cancel;
 
 /***/ }),
 /* 90 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(process) {/**
@@ -10857,8 +10914,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
-/***/ }),
-/* 91 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(21);
@@ -10869,7 +10925,7 @@ var GitHub = __webpack_require__(192);
 ReactDOM.render(React.createElement(GitHub, null), document.getElementById('app'));
 
 /***/ }),
-/* 92 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10883,11 +10939,13 @@ ReactDOM.render(React.createElement(GitHub, null), document.getElementById('app'
 
 
 
-var PooledClass = __webpack_require__(93);
+
+var PooledClass = __webpack_require__(92);
 var ReactElement = __webpack_require__(15);
 
-var emptyFunction = __webpack_require__(8);
-var traverseAllChildren = __webpack_require__(94);
+var emptyFunction = __webpack_require__(10);
+var traverseAllChildren = __webpack_require__(93);
+
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -11063,7 +11121,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 /***/ }),
-/* 93 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11179,7 +11237,7 @@ module.exports = PooledClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 94 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11200,7 +11258,9 @@ var REACT_ELEMENT_TYPE = __webpack_require__(55);
 
 var getIteratorFn = __webpack_require__(56);
 var invariant = __webpack_require__(1);
-var KeyEscapeUtils = __webpack_require__(95);
+
+var KeyEscapeUtils = __webpack_require__(94);
+
 var warning = __webpack_require__(2);
 
 var SEPARATOR = '.';
@@ -11359,7 +11419,7 @@ module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 95 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11421,7 +11481,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ }),
-/* 96 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11594,7 +11654,7 @@ module.exports = ReactDOMFactories;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 97 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11610,8 +11670,10 @@ module.exports = ReactDOMFactories;
 
 var _prodInvariant = __webpack_require__(18);
 
-var ReactPropTypeLocationNames = __webpack_require__(98);
-var ReactPropTypesSecret = __webpack_require__(99);
+
+var ReactPropTypeLocationNames = __webpack_require__(97);
+var ReactPropTypesSecret = __webpack_require__(98);
+
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -11655,6 +11717,466 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
         error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
       } catch (ex) {
         error = ex;
+
+      }
+      process.env.NODE_ENV !== 'production' ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames[location], typeSpecName, typeof error) : void 0;
+      if (error instanceof Error && !(error.message in loggedTypeFailures)) {
+        // Only monitor this failure once because there tends to be a lot of the
+        // same error.
+        loggedTypeFailures[error.message] = true;
+
+        var componentStackInfo = '';
+
+        if (process.env.NODE_ENV !== 'production') {
+          if (!ReactComponentTreeHook) {
+            ReactComponentTreeHook = __webpack_require__(7);
+          }
+          if (debugID !== null) {
+            componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
+          } else if (element !== null) {
+            componentStackInfo = ReactComponentTreeHook.getCurrentStackAddendum(element);
+          }
+        }
+
+        process.env.NODE_ENV !== 'production' ? warning(false, 'Failed %s type: %s%s', location, error.message, componentStackInfo) : void 0;
+      }
+    }
+  }
+}
+
+module.exports = checkReactTypeSpec;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+
+var ReactPropTypeLocationNames = {};
+
+if (process.env.NODE_ENV !== 'production') {
+  ReactPropTypeLocationNames = {
+    prop: 'prop',
+    context: 'context',
+    childContext: 'child context'
+  };
+}
+
+module.exports = ReactPropTypeLocationNames;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * 
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var _require = __webpack_require__(15),
+    isValidElement = _require.isValidElement;
+
+var factory = __webpack_require__(57);
+
+module.exports = factory(isValidElement);
+
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var emptyFunction = __webpack_require__(10);
+var invariant = __webpack_require__(1);
+var warning = __webpack_require__(2);
+var assign = __webpack_require__(4);
+
+var ReactPropTypesSecret = __webpack_require__(58);
+var checkPropTypes = __webpack_require__(101);
+
+module.exports = function(isValidElement, throwOnDirectAccess) {
+  /* global Symbol */
+  var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+  var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
+
+  /**
+   * Returns the iterator method function contained on the iterable object.
+   *
+   * Be sure to invoke the function with the iterable as context:
+   *
+   *     var iteratorFn = getIteratorFn(myIterable);
+   *     if (iteratorFn) {
+   *       var iterator = iteratorFn.call(myIterable);
+   *       ...
+   *     }
+   *
+   * @param {?object} maybeIterable
+   * @return {?function}
+   */
+  function getIteratorFn(maybeIterable) {
+    var iteratorFn = maybeIterable && (ITERATOR_SYMBOL && maybeIterable[ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL]);
+    if (typeof iteratorFn === 'function') {
+      return iteratorFn;
+    }
+  }
+
+  /**
+   * Collection of methods that allow declaration and validation of props that are
+   * supplied to React components. Example usage:
+   *
+   *   var Props = require('ReactPropTypes');
+   *   var MyArticle = React.createClass({
+   *     propTypes: {
+   *       // An optional string prop named "description".
+   *       description: Props.string,
+   *
+   *       // A required enum prop named "category".
+   *       category: Props.oneOf(['News','Photos']).isRequired,
+   *
+   *       // A prop named "dialog" that requires an instance of Dialog.
+   *       dialog: Props.instanceOf(Dialog).isRequired
+   *     },
+   *     render: function() { ... }
+   *   });
+   *
+   * A more formal specification of how these methods are used:
+   *
+   *   type := array|bool|func|object|number|string|oneOf([...])|instanceOf(...)
+   *   decl := ReactPropTypes.{type}(.isRequired)?
+   *
+   * Each and every declaration produces a function with the same signature. This
+   * allows the creation of custom validation functions. For example:
+   *
+   *  var MyLink = React.createClass({
+   *    propTypes: {
+   *      // An optional string or URI prop named "href".
+   *      href: function(props, propName, componentName) {
+   *        var propValue = props[propName];
+   *        if (propValue != null && typeof propValue !== 'string' &&
+   *            !(propValue instanceof URI)) {
+   *          return new Error(
+   *            'Expected a string or an URI for ' + propName + ' in ' +
+   *            componentName
+   *          );
+   *        }
+   *      }
+   *    },
+   *    render: function() {...}
+   *  });
+   *
+   * @internal
+   */
+
+  var ANONYMOUS = '<<anonymous>>';
+
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
+
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
+  };
+
+  /**
+   * inlined Object.is polyfill to avoid requiring consumers ship their own
+   * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+   */
+  /*eslint-disable no-self-compare*/
+  function is(x, y) {
+    // SameValue algorithm
+    if (x === y) {
+      // Steps 1-5, 7-10
+      // Steps 6.b-6.e: +0 != -0
+      return x !== 0 || 1 / x === 1 / y;
+    } else {
+      // Step 6.a: NaN == NaN
+      return x !== x && y !== y;
+    }
+  }
+  /*eslint-enable no-self-compare*/
+
+  /**
+   * We use an Error-like object for backward compatibility as people may call
+   * PropTypes directly and inspect their output. However, we don't use real
+   * Errors anymore. We don't inspect their stack anyway, and creating them
+   * is prohibitively expensive if they are created too often, such as what
+   * happens in oneOfType() for any type before the one that matched.
+   */
+  function PropTypeError(message) {
+    this.message = message;
+    this.stack = '';
+  }
+  // Make `instanceof Error` still work for returned errors.
+  PropTypeError.prototype = Error.prototype;
+
+  function createChainableTypeChecker(validate) {
+    if (process.env.NODE_ENV !== 'production') {
+      var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
+    }
+    function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
+      componentName = componentName || ANONYMOUS;
+      propFullName = propFullName || propName;
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          invariant(
+            false,
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+        } else if (process.env.NODE_ENV !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
+          var cacheKey = componentName + ':' + propName;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            warning(
+              false,
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+              propFullName,
+              componentName
+            );
+            manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
+          }
+        }
+      }
+      if (props[propName] == null) {
+        if (isRequired) {
+          if (props[propName] === null) {
+            return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required ' + ('in `' + componentName + '`, but its value is `null`.'));
+          }
+          return new PropTypeError('The ' + location + ' `' + propFullName + '` is marked as required in ' + ('`' + componentName + '`, but its value is `undefined`.'));
+        }
+        return null;
+      } else {
+        return validate(props, propName, componentName, location, propFullName);
+      }
+    }
+
+    var chainedCheckType = checkType.bind(null, false);
+    chainedCheckType.isRequired = checkType.bind(null, true);
+
+    return chainedCheckType;
+  }
+
+  function createPrimitiveTypeChecker(expectedType) {
+    function validate(props, propName, componentName, location, propFullName, secret) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== expectedType) {
+        // `propValue` being instance of, say, date/regexp, pass the 'object'
+        // check, but we can offer a more precise error message here rather than
+        // 'of type `object`'.
+        var preciseType = getPreciseType(propValue);
+
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createAnyTypeChecker() {
+    return createChainableTypeChecker(emptyFunction.thatReturnsNull);
+  }
+
+  function createArrayOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside arrayOf.');
+      }
+      var propValue = props[propName];
+      if (!Array.isArray(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an array.'));
+      }
+      for (var i = 0; i < propValue.length; i++) {
+        var error = typeChecker(propValue, i, componentName, location, propFullName + '[' + i + ']', ReactPropTypesSecret);
+        if (error instanceof Error) {
+          return error;
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createElementTypeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      if (!isValidElement(propValue)) {
+        var propType = getPropType(propValue);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected a single ReactElement.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createInstanceTypeChecker(expectedClass) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!(props[propName] instanceof expectedClass)) {
+        var expectedClassName = expectedClass.name || ANONYMOUS;
+        var actualClassName = getClassName(props[propName]);
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + actualClassName + '` supplied to `' + componentName + '`, expected ') + ('instance of `' + expectedClassName + '`.'));
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createEnumTypeChecker(expectedValues) {
+    if (!Array.isArray(expectedValues)) {
+      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOf, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      for (var i = 0; i < expectedValues.length; i++) {
+        if (is(propValue, expectedValues[i])) {
+          return null;
+        }
+      }
+
+      var valuesString = JSON.stringify(expectedValues);
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of value `' + propValue + '` ' + ('supplied to `' + componentName + '`, expected one of ' + valuesString + '.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createObjectOfTypeChecker(typeChecker) {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (typeof typeChecker !== 'function') {
+        return new PropTypeError('Property `' + propFullName + '` of component `' + componentName + '` has invalid PropType notation inside objectOf.');
+      }
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
+      }
+      for (var key in propValue) {
+        if (propValue.hasOwnProperty(key)) {
+          var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+          if (error instanceof Error) {
+            return error;
+          }
+        }
+      }
+      return null;
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createUnionTypeChecker(arrayOfTypeCheckers) {
+    if (!Array.isArray(arrayOfTypeCheckers)) {
+      process.env.NODE_ENV !== 'production' ? warning(false, 'Invalid argument supplied to oneOfType, expected an instance of array.') : void 0;
+      return emptyFunction.thatReturnsNull;
+    }
+
+    for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+      var checker = arrayOfTypeCheckers[i];
+      if (typeof checker !== 'function') {
+        warning(
+          false,
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
+          'received %s at index %s.',
+          getPostfixForTypeWarning(checker),
+          i
+        );
+        return emptyFunction.thatReturnsNull;
+      }
+    }
+
+    function validate(props, propName, componentName, location, propFullName) {
+      for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
+        var checker = arrayOfTypeCheckers[i];
+        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret) == null) {
+          return null;
+        }
+      }
+
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+    }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createNodeChecker() {
+    function validate(props, propName, componentName, location, propFullName) {
+      if (!isNode(props[propName])) {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`, expected a ReactNode.'));
+
       }
       process.env.NODE_ENV !== 'production' ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames[location], typeSpecName, typeof error) : void 0;
       if (error instanceof Error && !(error.message in loggedTypeFailures)) {
@@ -11734,7 +12256,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11860,7 +12382,9 @@ var _require = __webpack_require__(53),
 var _require2 = __webpack_require__(15),
     isValidElement = _require2.isValidElement;
 
-var ReactNoopUpdateQueue = __webpack_require__(54);
+
+var ReactNoopUpdateQueue = __webpack_require__(53);
+
 var factory = __webpack_require__(104);
 
 module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
@@ -12814,13 +13338,17 @@ module.exports = __webpack_require__(107);
 
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDefaultInjection = __webpack_require__(108);
-var ReactMount = __webpack_require__(83);
+
+var ReactMount = __webpack_require__(82);
+
 var ReactReconciler = __webpack_require__(19);
 var ReactUpdates = __webpack_require__(12);
 var ReactVersion = __webpack_require__(186);
 
 var findDOMNode = __webpack_require__(187);
-var getHostComponentFromComposite = __webpack_require__(84);
+
+var getHostComponentFromComposite = __webpack_require__(83);
+
 var renderSubtreeIntoContainer = __webpack_require__(188);
 var warning = __webpack_require__(2);
 
@@ -12897,7 +13425,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactInstrumentation = __webpack_require__(9);
+
+  var ReactInstrumentation = __webpack_require__(8);
+
   var ReactDOMUnknownPropertyHook = __webpack_require__(189);
   var ReactDOMNullInputValuePropHook = __webpack_require__(190);
   var ReactDOMInvalidARIAHook = __webpack_require__(191);
@@ -15035,7 +15565,9 @@ module.exports = HTMLDOMPropertyConfig;
 
 
 
-var DOMChildrenOperations = __webpack_require__(41);
+
+var DOMChildrenOperations = __webpack_require__(40);
+
 var ReactDOMIDOperations = __webpack_require__(130);
 
 /**
@@ -15072,7 +15604,9 @@ var DOMLazyTree = __webpack_require__(20);
 var ExecutionEnvironment = __webpack_require__(6);
 
 var createNodesFromMarkup = __webpack_require__(127);
-var emptyFunction = __webpack_require__(8);
+
+var emptyFunction = __webpack_require__(10);
+
 var invariant = __webpack_require__(1);
 
 var Danger = {
@@ -15488,13 +16022,15 @@ var ReactDOMComponentFlags = __webpack_require__(60);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactDOMInput = __webpack_require__(143);
 var ReactDOMOption = __webpack_require__(144);
-var ReactDOMSelect = __webpack_require__(74);
+
+var ReactDOMSelect = __webpack_require__(73);
 var ReactDOMTextarea = __webpack_require__(145);
-var ReactInstrumentation = __webpack_require__(9);
+var ReactInstrumentation = __webpack_require__(8);
 var ReactMultiChild = __webpack_require__(146);
 var ReactServerRenderingTransaction = __webpack_require__(155);
 
-var emptyFunction = __webpack_require__(8);
+var emptyFunction = __webpack_require__(10);
+
 var escapeTextContentForBrowser = __webpack_require__(32);
 var invariant = __webpack_require__(1);
 var isEventSupported = __webpack_require__(39);
@@ -17765,7 +18301,9 @@ var ReactCurrentOwner = __webpack_require__(11);
 var ReactReconciler = __webpack_require__(19);
 var ReactChildReconciler = __webpack_require__(147);
 
-var emptyFunction = __webpack_require__(8);
+
+var emptyFunction = __webpack_require__(10);
+
 var flattenChildren = __webpack_require__(154);
 var invariant = __webpack_require__(1);
 
@@ -19269,7 +19807,9 @@ module.exports = ReactCompositeComponent;
 var _prodInvariant = __webpack_require__(3);
 
 var ReactPropTypeLocationNames = __webpack_require__(150);
-var ReactPropTypesSecret = __webpack_require__(73);
+
+var ReactPropTypesSecret = __webpack_require__(72);
+
 
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
@@ -19561,7 +20101,9 @@ var _assign = __webpack_require__(4);
 
 var PooledClass = __webpack_require__(16);
 var Transaction = __webpack_require__(29);
-var ReactInstrumentation = __webpack_require__(9);
+
+var ReactInstrumentation = __webpack_require__(8);
+
 var ReactServerUpdateQueue = __webpack_require__(156);
 
 /**
@@ -20242,7 +20784,9 @@ var PooledClass = __webpack_require__(16);
 var ReactDOMComponentTree = __webpack_require__(5);
 var ReactUpdates = __webpack_require__(12);
 
-var getEventTarget = __webpack_require__(38);
+
+var getEventTarget = __webpack_require__(37);
+
 var getUnboundedScrollPosition = __webpack_require__(162);
 
 /**
@@ -20656,7 +21200,8 @@ module.exports = ReactReconcileTransaction;
 var ExecutionEnvironment = __webpack_require__(6);
 
 var getNodeForCharacterOffset = __webpack_require__(166);
-var getTextContentAccessor = __webpack_require__(63);
+
+var getTextContentAccessor = __webpack_require__(62);
 
 /**
  * While `isCollapsed` is available on the Selection object and `collapsed`
@@ -21894,9 +22439,10 @@ module.exports = SyntheticFocusEvent;
 
 var SyntheticUIEvent = __webpack_require__(24);
 
-var getEventCharCode = __webpack_require__(51);
+var getEventCharCode = __webpack_require__(50);
 var getEventKey = __webpack_require__(177);
-var getEventModifierState = __webpack_require__(40);
+var getEventModifierState = __webpack_require__(39);
+
 
 /**
  * @interface KeyboardEvent
@@ -22787,7 +23333,10 @@ module.exports = ReactDOMInvalidARIAHook;
 
 var React = __webpack_require__(21);
 var SearchUser = __webpack_require__(193);
-var UserInfo = __webpack_require__(215);
+
+var UserInfo = __webpack_require__(213);
+var GitHubUser = __webpack_require__(84);
+
 
 var GitHub = React.createClass({
   displayName: 'GitHub',
@@ -22796,15 +23345,35 @@ var GitHub = React.createClass({
 
     return {
       user: null,
-      repos: []
+      repos: [],
+      pagingButtons: []
     };
   },
 
   updateUser: function (user) {
     this.setState({ user: user });
   },
-  updateRepos: function (repos) {
-    this.setState({ repos: repos });
+  updateRepos: function (repos, pagingButtons) {
+    this.setState({ repos, pagingButtons });
+  },
+
+  fetchRepos: function (pageLink) {
+    GitHubUser.getReposByLink(pageLink).then(function (response) {
+      const link = response.headers.link;
+      let pagingButtons;
+
+      if (link) {
+        pagingButtons = link.split(/, /).map(info => {
+          const [_, link, text] = info.match(/<(http[^>]+)>; rel="(\w+)"/);
+          return {
+            link,
+            text
+          };
+        });
+      }
+
+      this.updateRepos(response.data, pagingButtons);
+    }.bind(this));
   },
 
   render: function () {
@@ -22817,7 +23386,9 @@ var GitHub = React.createClass({
       }),
       React.createElement(UserInfo, {
         user: this.state.user,
-        repos: this.state.repos
+        repos: this.state.repos,
+        pagingButtons: this.state.pagingButtons,
+        updateRepos: this.fetchRepos
       })
     );
   }
@@ -22830,8 +23401,9 @@ module.exports = GitHub;
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(21);
-var GitHubUser = __webpack_require__(194);
-var PropTypes = __webpack_require__(90);
+
+var GitHubUser = __webpack_require__(84);
+
 
 var SearchUser = React.createClass({
   displayName: 'SearchUser',
@@ -22844,7 +23416,20 @@ var SearchUser = React.createClass({
     }.bind(this));
 
     GitHubUser.getReposByUsername(this.refs.username.value).then(function (response) {
-      this.props.updateRepos(response.data);
+      const link = response.headers.link;
+      let pagingButtons;
+
+      if (link) {
+        pagingButtons = link.split(/, /).map(info => {
+          const [_, link, text] = info.match(/<(http[^>]+)>; rel="(\w+)"/);
+          return {
+            link,
+            text
+          };
+        });
+      }
+
+      this.props.updateRepos(response.data, pagingButtons);
     }.bind(this));
   },
 
@@ -22896,6 +23481,7 @@ module.exports = SearchUser;
 
 /***/ }),
 /* 194 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 var axios = __webpack_require__(195);
@@ -22913,7 +23499,7 @@ var GitHubUser = {
 module.exports = GitHubUser;
 
 /***/ }),
-/* 195 */
+
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(196);
@@ -22925,10 +23511,12 @@ module.exports = __webpack_require__(196);
 "use strict";
 
 
-var utils = __webpack_require__(10);
+
+var utils = __webpack_require__(9);
 var bind = __webpack_require__(85);
-var Axios = __webpack_require__(198);
-var defaults = __webpack_require__(52);
+var Axios = __webpack_require__(197);
+var defaults = __webpack_require__(51);
+
 
 /**
  * Create an instance of Axios
@@ -22962,7 +23550,9 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(89);
-axios.CancelToken = __webpack_require__(212);
+
+axios.CancelToken = __webpack_require__(211);
+
 axios.isCancel = __webpack_require__(88);
 
 // Expose all/spread
@@ -23540,10 +24130,11 @@ module.exports = InterceptorManager;
 "use strict";
 
 
-var utils = __webpack_require__(10);
-var transformData = __webpack_require__(209);
+
+var utils = __webpack_require__(9);
+var transformData = __webpack_require__(208);
 var isCancel = __webpack_require__(88);
-var defaults = __webpack_require__(52);
+var defaults = __webpack_require__(51);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -23923,16 +24514,19 @@ function UserInfo(props) {
     React.createElement(
       'div',
       { className: 'col-lg-8' },
-      React.createElement(UserRepos, { repos: props.repos })
+      React.createElement(UserRepos, { repos: props.repos, pagingButtons: props.pagingButtons, updateRepos: props.updateRepos })
     )
   ) : null;
 
   return userInfo;
 }
 
-UserInfo.PropTypes = {
-  user: PropTypes.object,
-  repos: PropTypes.array
+
+UserInfo.propTypes = {
+  user: React.PropTypes.object,
+  repos: React.PropTypes.array,
+  updateRepos: React.PropTypes.func
+
 };
 
 module.exports = UserInfo;
@@ -23953,6 +24547,28 @@ var UserRepos = React.createClass({
   },
   componentWillReceiveProps: function (props) {
     this.setState({ reposCount: props.repos.length });
+  },
+  renderPaging: function () {
+    const { updateRepos } = this.props;
+
+    const pagingButtons = this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2));
+
+    return React.createElement(
+      "ul",
+      { className: "pagination" },
+      pagingButtons.map((pagingInfo, i) => React.createElement(
+        "li",
+        { key: i },
+        React.createElement(
+          "a",
+          { href: pagingInfo.link,
+            onClick: e => {
+              e.preventDefault();updateRepos(pagingInfo.link);
+            } },
+          pagingInfo.text
+        )
+      ))
+    );
   },
   render: function () {
     var repos = this.props.repos.map(function (repo, key) {
@@ -24019,7 +24635,8 @@ var UserRepos = React.createClass({
         this.state.reposCount,
         " public repositories"
       ),
-      repos
+      repos,
+      this.renderPaging()
     );
   }
 });

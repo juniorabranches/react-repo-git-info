@@ -11,7 +11,20 @@ var SearchUser = React.createClass({
     }.bind(this));
 
     GitHubUser.getReposByUsername(this.refs.username.value).then(function(response) {
-      this.props.updateRepos(response.data);
+      const link = response.headers.link;
+      let pagingButtons;
+
+      if (link) {
+        pagingButtons = link.split(/, /).map(info => {
+          const [_, link, text] = info.match(/<(http[^>]+)>; rel="(\w+)"/);
+          return {
+            link,
+            text,
+          };
+        });
+      }
+
+      this.props.updateRepos(response.data, pagingButtons);
     }.bind(this));
   },
 
@@ -33,7 +46,7 @@ var SearchUser = React.createClass({
             </div>
           </form>
         </div>
-      </nav>        
+      </nav>
     );
   }
 });
