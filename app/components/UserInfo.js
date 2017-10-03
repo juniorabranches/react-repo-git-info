@@ -12,6 +12,10 @@ function UserInfo(props) {
       return [monthNames[d.getMonth()], d.getFullYear()].join(' ')
     }
 
+    function showSocial(user) {
+      return <p>Followers: {user.followers} / Following: {user.following}</p>      
+    }
+
     var userInfo = props.user ?
     (
       <div className="row">
@@ -20,7 +24,7 @@ function UserInfo(props) {
           <h2>{props.user.name}</h2>
           <h4>{props.user.login}</h4>
           <p>{props.user.bio}</p>
-          <p>Followers: {props.user.followers} / Following: {props.user.following}</p>
+          { props.user.type === 'User' && showSocial(props.user) }
           <p>Location: {props.user.location}</p>
           <p>Github user since: {convertDate(props.user.created_at)}</p>
           <p><a className="btn btn-default" href={props.user.html_url} role="button">View details</a></p>

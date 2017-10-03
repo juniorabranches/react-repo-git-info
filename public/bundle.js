@@ -23946,6 +23946,17 @@ function UserInfo(props) {
     return [monthNames[d.getMonth()], d.getFullYear()].join(' ');
   }
 
+  function showSocial(user) {
+    return React.createElement(
+      'p',
+      null,
+      'Followers: ',
+      user.followers,
+      ' / Following: ',
+      user.following
+    );
+  }
+
   var userInfo = props.user ? React.createElement(
     'div',
     { className: 'row' },
@@ -23968,14 +23979,7 @@ function UserInfo(props) {
         null,
         props.user.bio
       ),
-      React.createElement(
-        'p',
-        null,
-        'Followers: ',
-        props.user.followers,
-        ' / Following: ',
-        props.user.following
-      ),
+      props.user.type === 'User' && showSocial(props.user),
       React.createElement(
         'p',
         null,
