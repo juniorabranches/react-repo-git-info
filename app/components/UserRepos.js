@@ -35,8 +35,8 @@ var UserRepos = createReactClass({
       <div>
         <h2>Showing {this.state.reposCount} public repositories</h2>
           {
-            this.props.repos.map(function(repo, key) {
-              return <Repository key={key} data={repo} />
+            this.props.repos.map(function(repo) {
+              return <Repository key={repo.id} data={repo} />
             })
           }
         { this.renderPaging() }
