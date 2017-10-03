@@ -1,7 +1,8 @@
 var React = require('react');
 var axios = require('axios');
+var createReactClass = require('create-react-class');
 
-var Repository = React.createClass({
+var Repository = createReactClass({
     getInitialState: function() {
         return { languages: [] }
     },
