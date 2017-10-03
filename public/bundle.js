@@ -23975,13 +23975,11 @@ var Repository = createReactClass({
     },
     componentDidMount: function () {
         return axios.get(this.props.data.languages_url).then(function (response) {
-            this.setState({ languages: Object.keys(response.data) });
+            this.setState({ languages: Object.keys(response.data).join(', ') });
         }.bind(this));
     },
     render: function () {
-        var languages = this.state.languages.reduce(function (data, language) {
-            return data ? data + ', ' + language : language;
-        }, null);
+        var languages = this.state.languages;
         return React.createElement(
             'div',
             { key: this.props.data.id, className: 'thumbnail' },
@@ -24021,10 +24019,10 @@ var Repository = createReactClass({
                     'Main language: ',
                     this.props.data.language
                 ),
-                this.state.languages && this.state.languages.length > 0 && React.createElement(
+                languages && languages.length > 0 && React.createElement(
                     'p',
                     null,
-                    'Languages: ',
+                    'All Languages: ',
                     languages
                 ),
                 React.createElement(

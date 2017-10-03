@@ -8,13 +8,11 @@ var Repository = createReactClass({
     },
     componentDidMount: function() {
         return axios.get(this.props.data.languages_url).then(function(response){
-            this.setState({ languages: Object.keys(response.data) });
+            this.setState({ languages: Object.keys(response.data).join(', ') });
         }.bind(this));
     },
     render: function() {
-        var languages =  this.state.languages.reduce(function(data, language) {
-            return data ?  data + ', ' + language : language;
-        }, null);
+        var languages = this.state.languages;
         return (
             <div key={this.props.data.id} className="thumbnail">
                 <div className="caption">
@@ -25,8 +23,8 @@ var Repository = createReactClass({
                 <p>{this.props.data.description}</p>
                 <p>Main language: {this.props.data.language}</p>
                 {
-                    this.state.languages && this.state.languages.length > 0 &&
-                    <p>Languages: {languages}</p>
+                    languages && languages.length > 0 &&
+                    <p>All Languages: {languages}</p>
                 }
                 <p>
                     <a href={this.props.data.html_url + '/issues'} className="btn btn-default" role="button">Issues ({this.props.data.open_issues}) </a>
