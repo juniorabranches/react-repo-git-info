@@ -5,9 +5,8 @@ var GitHubUser = {
     return axios.get('https://api.github.com/users/' + username);
   },
 
-
   getReposByUsername: function (username, page = 1) {
-    return axios.get(`https://api.github.com/users/${username}/repos?page=${page}`);
+    return axios.get(`https://api.github.com/users/${username}/repos?page=${page}&sort=updated`);
   },
 
   getReposByLink: function (pageLink) {
