@@ -23943,8 +23943,8 @@ var UserRepos = createReactClass({
   },
   render: function () {
 
-    var repos = this.props.repos.map(function (repo, key) {
-      return React.createElement(UserReposDetail, { key: key, repo: repo });
+    var repos = this.props.repos.map(function (repo) {
+      return React.createElement(UserReposDetail, { key: repo.id, repo: repo });
     });
 
     return React.createElement(

@@ -32,9 +32,9 @@ var UserRepos = createReactClass({
   },
   render: function() {
 
-    var repos = this.props.repos.map(function(repo, key) {
+    var repos = this.props.repos.map(function(repo) {
       return (
-        <UserReposDetail key={key} repo={repo} />
+        <UserReposDetail key={repo.id} repo={repo} />
       );
     });
 
