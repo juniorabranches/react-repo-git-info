@@ -1444,7 +1444,7 @@ var GitHubUser = {
   },
 
   getReposByUsername: function (username, page = 1) {
-    return axios.get(`https://api.github.com/users/${username}/repos?page=${page}`);
+    return axios.get(`https://api.github.com/users/${username}/repos?page=${page}&sort=updated`);
   },
 
   getReposByLink: function (pageLink) {
@@ -23906,6 +23906,7 @@ module.exports = UserInfo;
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(2);
+var Repository = __webpack_require__(66);
 var createReactClass = __webpack_require__(13);
 var UserReposDetail = __webpack_require__(65);
 
@@ -23957,7 +23958,9 @@ var UserRepos = createReactClass({
         this.state.reposCount,
         ' public repositories'
       ),
-      repos,
+      this.props.repos.map(function (repo, key) {
+        return React.createElement(Repository, { key: key, data: repo });
+      }),
       this.renderPaging()
     );
   }
@@ -24051,6 +24054,92 @@ var UserRepos = createReactClass({
 });
 
 module.exports = UserRepos;
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(2);
+var axios = __webpack_require__(43);
+var createReactClass = __webpack_require__(13);
+
+var Repository = createReactClass({
+    displayName: 'Repository',
+
+    getInitialState: function () {
+        return { languages: [] };
+    },
+    componentDidMount: function () {
+        return axios.get(this.props.data.languages_url).then(function (response) {
+            this.setState({ languages: Object.keys(response.data) });
+        }.bind(this));
+    },
+    render: function () {
+        var languages = this.state.languages.reduce(function (data, language) {
+            return data ? data + ', ' + language : language;
+        }, null);
+        return React.createElement(
+            'div',
+            { key: this.props.data.id, className: 'thumbnail' },
+            React.createElement(
+                'div',
+                { className: 'caption' },
+                React.createElement(
+                    'h3',
+                    null,
+                    React.createElement(
+                        'a',
+                        { href: this.props.data.html_url },
+                        ' ',
+                        this.props.data.name
+                    ),
+                    React.createElement(
+                        'span',
+                        { className: 'badge' },
+                        this.props.data.stargazers_count,
+                        ' Stars'
+                    ),
+                    React.createElement(
+                        'span',
+                        { className: 'badge' },
+                        this.props.data.forks_count,
+                        ' Forks'
+                    )
+                ),
+                React.createElement(
+                    'p',
+                    null,
+                    this.props.data.description
+                ),
+                React.createElement(
+                    'p',
+                    null,
+                    'Main language: ',
+                    this.props.data.language
+                ),
+                this.state.languages && this.state.languages.length > 0 && React.createElement(
+                    'p',
+                    null,
+                    'Languages: ',
+                    languages
+                ),
+                React.createElement(
+                    'p',
+                    null,
+                    React.createElement(
+                        'a',
+                        { href: this.props.data.html_url + '/issues', className: 'btn btn-default', role: 'button' },
+                        'Issues (',
+                        this.props.data.open_issues,
+                        ') '
+                    )
+                )
+            )
+        );
+    }
+});
+
+module.exports = Repository;
 
 /***/ })
 /******/ ]);
