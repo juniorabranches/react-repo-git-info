@@ -2,8 +2,9 @@ var React = require('react');
 var SearchUser = require('./SearchUser');
 var UserInfo = require('./UserInfo');
 var GitHubUser = require('../services/GitHubUser');
+var createReactClass = require('create-react-class');
 
-var GitHub = React.createClass({
+var GitHub = createReactClass({
   getInitialState: function() {
 
     return {
