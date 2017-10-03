@@ -1,5 +1,4 @@
 var React = require('react');
-var GitHubRepo = require('../services/GitHubRepo');
 var axios = require('axios');
 
 var Repository = React.createClass({

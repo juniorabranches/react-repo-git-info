@@ -1,7 +1,8 @@
 var React = require('react');
 var Repository = require('./Repository');
+var createReactClass = require('create-react-class');
 
-var UserRepos = React.createClass({
+var UserRepos = createReactClass({
   getInitialState: function() {
     return {
       reposCount: 0,
@@ -12,8 +13,9 @@ var UserRepos = React.createClass({
   },
   renderPaging: function() {
     const { updateRepos } = this.props;
-
-    const pagingButtons = this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2));
+    const pagingButtons = !!this.props.pagingButtons
+      ? this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2)) 
+      : [];
 
     return (
       <ul className="pagination">
