@@ -12,8 +12,9 @@ var UserRepos = createReactClass({
   },
   renderPaging: function() {
     const { updateRepos } = this.props;
-
-    const pagingButtons = this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2));
+    const pagingButtons = !!this.props.pagingButtons
+      ? this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2)) 
+      : [];
 
     return (
       <ul className="pagination">
