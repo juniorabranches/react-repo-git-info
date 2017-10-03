@@ -1,6 +1,7 @@
 var React = require('react');
 var Repository = require('./Repository');
 var createReactClass = require('create-react-class');
+var UserReposDetail = require('./UserReposDetail');
 
 var UserRepos = createReactClass({
   getInitialState: function() {
@@ -31,6 +32,13 @@ var UserRepos = createReactClass({
     );
   },
   render: function() {
+
+    var repos = this.props.repos.map(function(repo) {
+      return (
+        <UserReposDetail key={repo.id} repo={repo} />
+      );
+    });
+
     return (
       <div>
         <h2>Showing {this.state.reposCount} public repositories</h2>

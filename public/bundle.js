@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -260,7 +260,7 @@ process.umask = function() { return 0; };
 "use strict";
 
 
-var bind = __webpack_require__(21);
+var bind = __webpack_require__(20);
 var isBuffer = __webpack_require__(45);
 
 /*global toString:true*/
@@ -571,9 +571,9 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(27);
+  module.exports = __webpack_require__(26);
 } else {
-  module.exports = __webpack_require__(28);
+  module.exports = __webpack_require__(27);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -1021,11 +1021,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(40)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(39)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(41)();
+  module.exports = __webpack_require__(40)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -1054,10 +1054,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(22);
+    adapter = __webpack_require__(21);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(22);
+    adapter = __webpack_require__(21);
   }
   return adapter;
 }
@@ -1333,7 +1333,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(31);
+var isTextNode = __webpack_require__(30);
 
 /*eslint-disable no-bitwise */
 
@@ -1436,7 +1436,7 @@ module.exports = getActiveElement;
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var axios = __webpack_require__(20);
+var axios = __webpack_require__(43);
 
 var GitHubUser = {
   getByUsername: function (username) {
@@ -1449,6 +1449,10 @@ var GitHubUser = {
 
   getReposByLink: function (pageLink) {
     return axios.get(pageLink);
+  },
+
+  getReposLanguages: function (urlLanguages) {
+    return axios.get(urlLanguages);
   }
 
 };
@@ -1457,12 +1461,6 @@ module.exports = GitHubUser;
 
 /***/ }),
 /* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(44);
-
-/***/ }),
-/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1480,7 +1478,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1491,7 +1489,7 @@ var settle = __webpack_require__(48);
 var buildURL = __webpack_require__(50);
 var parseHeaders = __webpack_require__(51);
 var isURLSameOrigin = __webpack_require__(52);
-var createError = __webpack_require__(23);
+var createError = __webpack_require__(22);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(53);
 
 module.exports = function xhrAdapter(config) {
@@ -1668,7 +1666,7 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1693,7 +1691,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1705,7 +1703,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1731,18 +1729,18 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(2);
-var ReactDOM = __webpack_require__(29);
+var ReactDOM = __webpack_require__(28);
 
-var GitHub = __webpack_require__(42);
+var GitHub = __webpack_require__(41);
 
 ReactDOM.render(React.createElement(GitHub, null), document.getElementById('app'));
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1772,7 +1770,7 @@ module.exports={Children:{map:S.map,forEach:S.forEach,count:S.count,toArray:S.to
 
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3478,7 +3476,7 @@ module.exports = ReactEntry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3516,15 +3514,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(30);
+  module.exports = __webpack_require__(29);
 } else {
-  module.exports = __webpack_require__(33);
+  module.exports = __webpack_require__(32);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3787,7 +3785,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
 
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3802,7 +3800,7 @@ unstable_deferredUpdates:Xj.deferredUpdates,flushSync:Xj.flushSync,__SECRET_INTE
  * @typechecks
  */
 
-var isNode = __webpack_require__(32);
+var isNode = __webpack_require__(31);
 
 /**
  * @param {*} object The object to check.
@@ -3815,7 +3813,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3843,7 +3841,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3869,10 +3867,10 @@ var ExecutionEnvironment = __webpack_require__(10);
 var _assign = __webpack_require__(5);
 var EventListener = __webpack_require__(14);
 var require$$0 = __webpack_require__(7);
-var hyphenateStyleName = __webpack_require__(34);
+var hyphenateStyleName = __webpack_require__(33);
 var emptyFunction = __webpack_require__(4);
-var camelizeStyleName = __webpack_require__(36);
-var performanceNow = __webpack_require__(38);
+var camelizeStyleName = __webpack_require__(35);
+var performanceNow = __webpack_require__(37);
 var propTypes = __webpack_require__(11);
 var emptyObject = __webpack_require__(6);
 var checkPropTypes = __webpack_require__(8);
@@ -21072,7 +21070,7 @@ module.exports = ReactDOMFiberEntry;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21087,7 +21085,7 @@ module.exports = ReactDOMFiberEntry;
 
 
 
-var hyphenate = __webpack_require__(35);
+var hyphenate = __webpack_require__(34);
 
 var msPattern = /^ms-/;
 
@@ -21114,7 +21112,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21150,7 +21148,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21165,7 +21163,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(37);
+var camelize = __webpack_require__(36);
 
 var msPattern = /^-ms-/;
 
@@ -21193,7 +21191,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21228,7 +21226,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21243,7 +21241,7 @@ module.exports = camelize;
  * @typechecks
  */
 
-var performance = __webpack_require__(39);
+var performance = __webpack_require__(38);
 
 var performanceNow;
 
@@ -21265,7 +21263,7 @@ if (performance.now) {
 module.exports = performanceNow;
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21291,7 +21289,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = performance || {};
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21841,7 +21839,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21906,11 +21904,11 @@ module.exports = function() {
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(2);
-var SearchUser = __webpack_require__(43);
+var SearchUser = __webpack_require__(42);
 var UserInfo = __webpack_require__(63);
 var GitHubUser = __webpack_require__(19);
 var createReactClass = __webpack_require__(13);
@@ -21974,7 +21972,7 @@ var GitHub = createReactClass({
 module.exports = GitHub;
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(2);
@@ -22057,6 +22055,12 @@ SearchUser.PropTypes = {
 module.exports = SearchUser;
 
 /***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(44);
+
+/***/ }),
 /* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22064,7 +22068,7 @@ module.exports = SearchUser;
 
 
 var utils = __webpack_require__(1);
-var bind = __webpack_require__(21);
+var bind = __webpack_require__(20);
 var Axios = __webpack_require__(46);
 var defaults = __webpack_require__(12);
 
@@ -22099,9 +22103,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(25);
+axios.Cancel = __webpack_require__(24);
 axios.CancelToken = __webpack_require__(60);
-axios.isCancel = __webpack_require__(24);
+axios.isCancel = __webpack_require__(23);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -22261,7 +22265,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(23);
+var createError = __webpack_require__(22);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -22680,7 +22684,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(1);
 var transformData = __webpack_require__(57);
-var isCancel = __webpack_require__(24);
+var isCancel = __webpack_require__(23);
 var defaults = __webpack_require__(12);
 
 /**
@@ -22833,7 +22837,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(25);
+var Cancel = __webpack_require__(24);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -23902,8 +23906,9 @@ module.exports = UserInfo;
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(2);
-var Repository = __webpack_require__(65);
+var Repository = __webpack_require__(66);
 var createReactClass = __webpack_require__(13);
+var UserReposDetail = __webpack_require__(65);
 
 var UserRepos = createReactClass({
   displayName: 'UserRepos',
@@ -23938,6 +23943,11 @@ var UserRepos = createReactClass({
     );
   },
   render: function () {
+
+    var repos = this.props.repos.map(function (repo) {
+      return React.createElement(UserReposDetail, { key: repo.id, repo: repo });
+    });
+
     return React.createElement(
       'div',
       null,
@@ -23963,7 +23973,94 @@ module.exports = UserRepos;
 /***/ (function(module, exports, __webpack_require__) {
 
 var React = __webpack_require__(2);
-var axios = __webpack_require__(20);
+var createReactClass = __webpack_require__(13);
+var GitHubUser = __webpack_require__(19);
+
+var UserRepos = createReactClass({
+  displayName: 'UserRepos',
+
+  getInitialState: function () {
+    return {
+      languages: ''
+    };
+  },
+  componentDidMount: function () {
+    GitHubUser.getReposLanguages(this.props.repo.languages_url).then(({ data }) => {
+      this.setState({ languages: Object.keys(data).join(', ') });
+      return Promise.resolve();
+    });
+  },
+  render: function () {
+    var repo = this.props.repo;
+    return React.createElement(
+      'div',
+      { className: 'thumbnail' },
+      React.createElement(
+        'div',
+        { className: 'caption' },
+        React.createElement(
+          'h3',
+          null,
+          React.createElement(
+            'a',
+            { href: repo.html_url },
+            ' ',
+            repo.name
+          ),
+          React.createElement(
+            'span',
+            { className: 'badge' },
+            repo.stargazers_count,
+            ' Stars'
+          ),
+          React.createElement(
+            'span',
+            { className: 'badge' },
+            repo.forks_count,
+            ' Forks'
+          )
+        ),
+        React.createElement(
+          'p',
+          null,
+          repo.description
+        ),
+        React.createElement(
+          'p',
+          null,
+          'Main language: ',
+          repo.language
+        ),
+        React.createElement(
+          'p',
+          null,
+          'All languages: ',
+          this.state.languages
+        ),
+        React.createElement(
+          'p',
+          null,
+          React.createElement(
+            'a',
+            { href: repo.html_url + '/issues', className: 'btn btn-default', role: 'button' },
+            'Issues (',
+            repo.open_issues,
+            ') '
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = UserRepos;
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(2);
+var axios = __webpack_require__(43);
 var createReactClass = __webpack_require__(13);
 
 var Repository = createReactClass({

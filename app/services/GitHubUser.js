@@ -13,6 +13,10 @@ var GitHubUser = {
     return axios.get(pageLink);
   },
 
+  getReposLanguages: function (urlLanguages) {
+    return axios.get(urlLanguages);
+  },
+
 };
 
 module.exports = GitHubUser;
