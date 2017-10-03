@@ -1,5 +1,5 @@
 var React = require('react');
-
+var PropTypes = require('prop-types');
 var UserRepos = require('./UserRepos');
 
 function UserInfo(props) {
@@ -34,9 +34,9 @@ function UserInfo(props) {
     return userInfo;
 }
 
-UserInfo.propTypes = {
-  user: React.PropTypes.object,
-  repos: React.PropTypes.array,
+UserInfo.PropTypes = {
+  user: PropTypes.object,
+  repos: PropTypes.array,
 };
 
 module.exports = UserInfo;
