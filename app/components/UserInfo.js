@@ -34,11 +34,10 @@ function UserInfo(props) {
     return userInfo;
 }
 
-
 UserInfo.propTypes = {
-  user: React.PropTypes.object,
-  repos: React.PropTypes.array,
-  updateRepos: React.PropTypes.func
+  user: PropTypes.object,
+  repos: PropTypes.array,
+  updateRepos: PropTypes.func
 };
 
 module.exports = UserInfo;

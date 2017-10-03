@@ -1,8 +1,9 @@
 var React = require('react');
 var GitHubUser = require('../services/GitHubUser');
 var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
 
-var SearchUser = React.createClass({
+var SearchUser = createReactClass({
   handleSubmit: function(e) {
     e.preventDefault();
 
