@@ -1449,6 +1449,10 @@ var GitHubUser = {
 
   getReposByLink: function (pageLink) {
     return axios.get(pageLink);
+  },
+
+  getReposLanguages: function (urlLanguages) {
+    return axios.get(urlLanguages);
   }
 
 };
@@ -23903,6 +23907,7 @@ module.exports = UserInfo;
 
 var React = __webpack_require__(2);
 var createReactClass = __webpack_require__(13);
+var UserReposDetail = __webpack_require__(65);
 
 var UserRepos = createReactClass({
   displayName: 'UserRepos',
@@ -23937,59 +23942,9 @@ var UserRepos = createReactClass({
     );
   },
   render: function () {
+
     var repos = this.props.repos.map(function (repo, key) {
-      return React.createElement(
-        'div',
-        { key: key, className: 'thumbnail' },
-        React.createElement(
-          'div',
-          { className: 'caption' },
-          React.createElement(
-            'h3',
-            null,
-            React.createElement(
-              'a',
-              { href: repo.html_url },
-              ' ',
-              repo.name
-            ),
-            React.createElement(
-              'span',
-              { className: 'badge' },
-              repo.stargazers_count,
-              ' Stars'
-            ),
-            React.createElement(
-              'span',
-              { className: 'badge' },
-              repo.forks_count,
-              ' Forks'
-            )
-          ),
-          React.createElement(
-            'p',
-            null,
-            repo.description
-          ),
-          React.createElement(
-            'p',
-            null,
-            'Main language: ',
-            repo.language
-          ),
-          React.createElement(
-            'p',
-            null,
-            React.createElement(
-              'a',
-              { href: repo.html_url + '/issues', className: 'btn btn-default', role: 'button' },
-              'Issues (',
-              repo.open_issues,
-              ') '
-            )
-          )
-        )
-      );
+      return React.createElement(UserReposDetail, { key: key, repo: repo });
     });
 
     return React.createElement(
@@ -24004,6 +23959,93 @@ var UserRepos = createReactClass({
       ),
       repos,
       this.renderPaging()
+    );
+  }
+});
+
+module.exports = UserRepos;
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var React = __webpack_require__(2);
+var createReactClass = __webpack_require__(13);
+var GitHubUser = __webpack_require__(19);
+
+var UserRepos = createReactClass({
+  displayName: 'UserRepos',
+
+  getInitialState: function () {
+    return {
+      languages: ''
+    };
+  },
+  componentDidMount: function () {
+    GitHubUser.getReposLanguages(this.props.repo.languages_url).then(({ data }) => {
+      this.setState({ languages: Object.keys(data).join(', ') });
+      return Promise.resolve();
+    });
+  },
+  render: function () {
+    var repo = this.props.repo;
+    return React.createElement(
+      'div',
+      { className: 'thumbnail' },
+      React.createElement(
+        'div',
+        { className: 'caption' },
+        React.createElement(
+          'h3',
+          null,
+          React.createElement(
+            'a',
+            { href: repo.html_url },
+            ' ',
+            repo.name
+          ),
+          React.createElement(
+            'span',
+            { className: 'badge' },
+            repo.stargazers_count,
+            ' Stars'
+          ),
+          React.createElement(
+            'span',
+            { className: 'badge' },
+            repo.forks_count,
+            ' Forks'
+          )
+        ),
+        React.createElement(
+          'p',
+          null,
+          repo.description
+        ),
+        React.createElement(
+          'p',
+          null,
+          'Main language: ',
+          repo.language
+        ),
+        React.createElement(
+          'p',
+          null,
+          'All languages: ',
+          this.state.languages
+        ),
+        React.createElement(
+          'p',
+          null,
+          React.createElement(
+            'a',
+            { href: repo.html_url + '/issues', className: 'btn btn-default', role: 'button' },
+            'Issues (',
+            repo.open_issues,
+            ') '
+          )
+        )
+      )
     );
   }
 });
