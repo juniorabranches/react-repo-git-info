@@ -30,7 +30,11 @@ function UserInfo(props) {
           <p><a className="btn btn-default" href={props.user.html_url} role="button">View details</a></p>
         </div>
         <div className="col-lg-8">
-          <UserRepos repos={props.repos} pagingButtons={props.pagingButtons} updateRepos={props.updateRepos} />
+          <UserRepos 
+            repos={props.repos} 
+            pagingButtons={props.pagingButtons} 
+            updateRepos={props.updateRepos} 
+          />
         </div>
       </div>
     ) : null;
