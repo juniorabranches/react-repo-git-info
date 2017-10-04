@@ -13,7 +13,13 @@ function UserInfo(props) {
     }
 
     function showSocial(user) {
-      return <p>Followers: {user.followers} / Following: {user.following}</p>      
+      const followersLink = `https://github.com/${user.login}?tab=followers`
+      const followingLink = `https://github.com/${user.login}?tab=following`
+      return (
+        <p>
+          <a href={followersLink}>Followers: {user.followers}</a> / <a href={followingLink}>Following: {user.following}</a>
+        </p>
+      )
     }
 
     var userInfo = props.user ?
