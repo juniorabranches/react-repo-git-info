@@ -3,7 +3,7 @@ var React = require('react');
 var UserRepos = require('./UserRepos');
 
 function UserInfo(props) {
-    
+
     var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
 
