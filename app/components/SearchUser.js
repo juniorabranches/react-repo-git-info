@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 class SearchUser extends PureComponent {
   constructor(){
@@ -37,7 +38,7 @@ class SearchUser extends PureComponent {
 }
 
 SearchUser.propTypes = {
-  fetchUser: React.PropTypes.func.isRequired,
+  fetchUser: PropTypes.func.isRequired,
 };
 
 export default SearchUser;
