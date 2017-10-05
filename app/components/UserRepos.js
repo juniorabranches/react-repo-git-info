@@ -1,20 +1,24 @@
-var React = require('react');
-var Repository = require('./Repository');
-var createReactClass = require('create-react-class');
+import React, { PureComponent } from 'react';
+import Repository from './Repository';
 
-var UserRepos = createReactClass({
-  getInitialState: function() {
-    return {
-      reposCount: 0,
-    }
-  },
-  componentWillReceiveProps: function(props) {
-    this.setState({reposCount: props.repos.length});
-  },
-  renderPaging: function() {
+class UserRepos extends PureComponent {
+  constructor(props){
+    super(props);
+    this.state = { reposCount: 0 };
+  }
+
+  componentWillMount() {
+    this.setState({ reposCount: this.props.repos.length });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ reposCount: nextProps.repos.length });
+  }
+
+  renderPaging(){
     const { updateRepos } = this.props;
     const pagingButtons = !!this.props.pagingButtons
-      ? this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2)) 
+      ? this.props.pagingButtons.slice(2).concat(this.props.pagingButtons.slice(0, 2))
       : [];
 
     return (
@@ -29,8 +33,9 @@ var UserRepos = createReactClass({
         )}
       </ul>
     );
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div>
         <h2>Showing {this.state.reposCount} public repositories</h2>
@@ -43,6 +48,6 @@ var UserRepos = createReactClass({
       </div>
     );
   }
-});
+}
 
-module.exports = UserRepos;
+export default UserRepos;
