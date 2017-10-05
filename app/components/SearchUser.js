@@ -23,7 +23,7 @@ class SearchUser extends PureComponent {
           </div>
           <form className="navbar-form navbar-left" onSubmit={this.handleSubmit}>
             <div className="input-group">
-              <input type="text" ref="username" className="form-control" placeholder="juniorabranches"/>
+              <input autoFocus type="text" ref="username" className="form-control" placeholder="juniorabranches"/>
               <div className="input-group-btn">
                 <button className="btn btn-default" type="submit">
                   <i className="glyphicon glyphicon-search"></i>
