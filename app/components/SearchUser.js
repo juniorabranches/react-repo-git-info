@@ -1,35 +1,19 @@
-var React = require('react');
-var GitHubUser = require('../services/GitHubUser');
-var PropTypes = require('prop-types');
-var createReactClass = require('create-react-class');
+import React, { PureComponent } from 'react';
 
-var SearchUser = createReactClass({
-  handleSubmit: function(e) {
+class SearchUser extends PureComponent {
+  constructor(){
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e){
     e.preventDefault();
+    const { fetchUser } = this.props;
+    const userName = this.refs.username.value;
+    fetchUser(userName);
+  }
 
-    GitHubUser.getByUsername(this.refs.username.value).then(function(response) {
-      this.props.updateUser(response.data);
-    }.bind(this));
-
-    GitHubUser.getReposByUsername(this.refs.username.value).then(function(response) {
-      const link = response.headers.link;
-      let pagingButtons;
-
-      if (link) {
-        pagingButtons = link.split(/, /).map(info => {
-          const [_, link, text] = info.match(/<(http[^>]+)>; rel="(\w+)"/);
-          return {
-            link,
-            text,
-          };
-        });
-      }
-
-      this.props.updateRepos(response.data, pagingButtons);
-    }.bind(this));
-  },
-
-  render: function() {
+  render() {
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -50,11 +34,10 @@ var SearchUser = createReactClass({
       </nav>
     );
   }
-});
+}
 
-SearchUser.PropTypes = {
-  updateUser: PropTypes.func.isRequired,
-  updateRepos: PropTypes.func.isRequired,
+SearchUser.propTypes = {
+  fetchUser: React.PropTypes.func.isRequired,
 };
 
-module.exports = SearchUser;
+export default SearchUser;
