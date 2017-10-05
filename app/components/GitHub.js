@@ -26,7 +26,7 @@ class GitHub extends PureComponent {
     const isEmpty = _.isEmpty(userName);
 
     if (isEmpty) {
-      this.setState({ error: 'Insira o nome do usuário.' });
+      this.setState({ error: 'Insert something to search!' });
     } else {
       getByUsername(userName)
         .then((user) => {
@@ -55,7 +55,11 @@ class GitHub extends PureComponent {
           });
 
         }).catch((response) => {
-          this.setState({ error: 'Usuário não encontrado.' });
+          if (response.status == 404) {
+            this.setState({ error: 'Nothing found, try again...' });
+          } else if (response.status == 403) {
+            this.setState({ error: 'Sorry, Github API access rate limit. Try again later.' });
+          } else this.setState({ error: '' + response });           
         });
     }
   }
@@ -94,7 +98,7 @@ class GitHub extends PureComponent {
     }
 
     if (this.state.error) {
-      return <h2>{this.state.error}</h2>
+      return <h3>{this.state.error}</h3>
     }
 
     return null;
