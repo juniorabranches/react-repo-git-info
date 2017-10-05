@@ -26,7 +26,7 @@ class GitHub extends PureComponent {
     const isEmpty = _.isEmpty(userName);
 
     if (isEmpty) {
-      this.setState({ error: 'Insira o nome do usuario.' });
+      this.setState({ error: 'Insira o nome do usuário.' });
     } else {
       getByUsername(userName)
         .then((user) => {
@@ -55,7 +55,7 @@ class GitHub extends PureComponent {
           });
 
         }).catch((response) => {
-          this.setState({ error: 'Usuario não encontrado.' });
+          this.setState({ error: 'Usuário não encontrado.' });
         });
     }
   }
