@@ -31,7 +31,7 @@ const UserInfo = (props) => {
         { props.user.type === 'User' && showSocial(props.user) }
         <p>Location: {props.user.location}</p>
         <p>Github user since: {convertDate(props.user.created_at)}</p>
-        <p><a className="btn btn-default" href={props.user.html_url} role="button">View details</a></p>
+        <p><a className="btn btn-default" href={props.user.html_url} role="button">More info in GitHub</a></p>
       </div>
       <div className="col-lg-8">
         <UserRepos
