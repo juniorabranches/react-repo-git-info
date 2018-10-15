@@ -19,7 +19,7 @@ class SearchUser extends PureComponent {
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
-           <a className="navbar-brand" href="">GitHub User Info</a>
+           <a className="navbar-brand" href="">GitHub Info</a>
           </div>
           <form className="navbar-form navbar-left" onSubmit={this.handleSubmit}>
             <div className="input-group">
