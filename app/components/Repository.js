@@ -19,6 +19,7 @@ var Repository = createReactClass({
                 <h3><a href={this.props.data.html_url}> {this.props.data.name}</a>
                     <span className="badge">{this.props.data.stargazers_count} Stars</span>
                     <span className="badge">{this.props.data.forks_count} Forks</span>
+                    <span className="badge">{this.props.data.watchers_count} Watchers</span>
                 </h3>
                 <p>{this.props.data.description}</p>
                 <p>Main language: {this.props.data.language}</p>
