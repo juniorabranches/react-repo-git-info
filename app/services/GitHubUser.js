@@ -2,7 +2,7 @@ var axios = require('axios');
 
 var GitHubUser = {
   getByUsername: function (username) {
-    return axios.get('https://api.github.com/users/' + username);
+    return axios.get('  /' + username);
   },
 
   getReposByUsername: function (username, page = 1) {

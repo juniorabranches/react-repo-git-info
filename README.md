@@ -9,8 +9,8 @@ npm install
 
 # Build:  
 ```bash
-webpack -w
+npm run build
 ```
 
 # Open:
-* public/index.html
+* dist/public/index.html
