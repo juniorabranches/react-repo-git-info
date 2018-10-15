@@ -28,6 +28,7 @@ var Repository = createReactClass({
                 }
                 <p>
                     <a href={this.props.data.html_url + '/issues'} className="btn btn-default" role="button">Issues ({this.props.data.open_issues}) </a>
+                    <a href={this.props.data.html_url + '/pulls'} className="btn btn-default" role="button">Pull Requests</a>
                 </p>
                 </div>
             </div>
