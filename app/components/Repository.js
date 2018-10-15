@@ -13,13 +13,16 @@ var Repository = createReactClass({
     },
     render: function() {
         var languages = this.state.languages;
+        var stars = (this.props.data.stargazers_count).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        var forks = (this.props.data.forks_count).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        var watchers = (this.props.data.watchers_count).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
         return (
             <div key={this.props.data.id} className="thumbnail">
                 <div className="caption">
                 <h3><a href={this.props.data.html_url}> {this.props.data.name}</a>
-                    <span className="badge">{this.props.data.stargazers_count} Stars</span>
-                    <span className="badge">{this.props.data.forks_count} Forks</span>
-                    <span className="badge">{this.props.data.watchers_count} Watchers</span>
+                    <span className="badge">{stars} Stars</span>
+                    <span className="badge">{forks} Forks</span>
+                    <span className="badge">{watchers} Watchers</span>
                 </h3>
                 <p>{this.props.data.description}</p>
                 <p>Main language: {this.props.data.language}</p>
